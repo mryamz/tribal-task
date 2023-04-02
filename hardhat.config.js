@@ -63,7 +63,7 @@ module.exports = {
       allowUnlimitedContractSize: true
     },
     goerli: {
-      url: isNull(process.env.RINKEBY_URI, "https://rinkeby-eth.compound.finance"),
+      url: isNull(process.env.GOERLI, "https://rpc.ankr.com/eth_goerli"),
       accounts: [
         process.env.PRIVATE_KEY_1,
         process.env.PRIVATE_KEY_2,

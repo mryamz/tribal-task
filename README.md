@@ -1,4 +1,4 @@
-# Ky0x Lending
+# Tribal Lending
 
 ## Quick Start
 
