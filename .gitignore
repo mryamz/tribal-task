@@ -1,0 +1,17 @@
+# ingore all standard directors in a hardhat project
+
+node_modules
+
+.env
+
+.openzeppelin
+
+.vscode
+
+artifacts
+
+cache
+
+converage
+
+types
