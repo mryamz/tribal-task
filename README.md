@@ -1,19 +1,5 @@
 # Tribal Lending
 
-## Lender Deployment
-
-This project contains a deployment script that can be used to deploy the Lender contracts to the Sepolia network.
-
-## Deployment Steps
-
-To deploy the Lender contracts, follow these steps:
-
-1. Run the deployment script using the following command:
-
-npx hardhat run ./scripts/deployment/deployLender.js --network sepolia
-
-2. Wait for the deployment to complete.
-
 ## Deployed Contracts
 
 The following contracts were deployed to the Sepolia network:
@@ -31,7 +17,47 @@ The following contracts were deployed to the Sepolia network:
 | USDC | [0x65d4019A04488Ea65ed025DdC10E66AF1E2cdf2a](https://sepolia.etherscan.io/address/0x65d4019A04488Ea65ed025DdC10E66AF1E2cdf2a) |
 | USDT | [0x56FD9A6D509d5BC3114016d06f52619E5aeF1ff8](https://sepolia.etherscan.io/address/0x56FD9A6D509d5BC3114016d06)
 
+### PriceOracle
 
+The PriceOracle contract is responsible for providing asset prices to the Lender platform. It's an essential component for calculating the value of collateral, determining borrowing capacity, and enforcing liquidation thresholds. The PriceOracle contract reads prices from various trusted sources, such as price feeds, and then makes those prices available to other contracts in the platform.
+
+### Unitroller
+
+The Unitroller contract is a central administration contract that manages the interactions between the Comptroller and various market contracts. It serves as a proxy and delegates calls to the Comptroller, allowing for easy upgrades and changes to the Comptroller contract without affecting the market contracts. This design pattern ensures that the system remains flexible and upgradable.
+
+### Comptroller
+
+The Comptroller contract governs the overall behavior of the Lender platform. It manages risk parameters, such as collateral factors, liquidation incentives, and interest rate models. The Comptroller also handles user interactions with the platform, such as minting and redeeming cTokens, borrowing and repaying, and liquidating underwater accounts.
+
+### JumpRateModelV2
+
+The JumpRateModelV2 contract is an implementation of an interest rate model that calculates the borrowing and supply rates for assets in the platform. This model features a base rate, a multiplier for utilization, and a jump rate when utilization is above a certain threshold. This contract helps ensure that interest rates are dynamic and adjust in real-time based on market demand.
+
+### Delegate (cUSDC) and Delegate (cUSDT)
+
+The Delegate contracts are responsible for the implementation of the cToken market contracts. These contracts contain the logic for minting and redeeming cTokens, borrowing and repaying underlying assets, and managing the accrual of interest. The Delegate contracts are designed to be upgradable, allowing for bug fixes or improvements without affecting the users' assets.
+
+### Delegator (cUSDC) and Delegator (cUSDT)
+
+The Delegator contracts act as proxies for the Delegate contracts. They hold the storage for each cToken market, including user balances and interest accrual information. When users interact with the Lender platform, they interact with the Delegator contracts, which then delegate calls to the appropriate Delegate contract. This design pattern ensures that the storage and logic of the markets are separated, enabling a smooth upgrade process.
+
+### USDC and USDT
+
+These contracts represent the USDC and USDT stablecoins on the Sepolia network. Users can use these stablecoins to interact with the Lender platform, such as supplying collateral, borrowing assets, or repaying loans. The Lender platform supports multiple stablecoins to offer users flexibility and choice when using the platform.
+
+# Lender Deployment
+
+This project contains a deployment script that can be used to deploy the Lender contracts to the Sepolia network.
+
+## Deployment Steps
+
+To deploy the Lender contracts, follow these steps:
+
+1. Run the deployment script using the following command:
+
+npx hardhat run ./scripts/deployment/deployLender.js --network sepolia
+
+2. Wait for the deployment to complete.
 
 ## Deployment Log
 
