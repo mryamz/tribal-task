@@ -34,6 +34,17 @@ See the contracts in the `contracts` directory.
 
 From the root directory, you can run deployment scripts using the following commands:
 
+Before running the scripts, you need to create a `.env` file in the root directory and add the following environment variables:
+
+```bash
+PRIVATE_KEY_1="DEPLOYER/SUPPLIER"
+PRIVATE_KEY_2="BORROWER"
+
+SEPOLIA_URI="MY_SEPOLIA_API_KEY"
+```
+
+See `env.example` for an example.
+
 ```bash
 npx hardhat run ./scripts/deployment/deployLender.js --network sepolia
 ```

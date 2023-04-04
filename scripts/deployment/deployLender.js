@@ -15,16 +15,8 @@ const {
 async function main() {
   const [deployer, borrower] = await ethers.getSigners();
 
-  // deploy mock uniswap anchor view (UAV)
-  // const MockUniswapAnchoredView = await ethers.getContractFactory("MockUniswapAnchoredView");
-  // const mockUniswapAnchoredView = await MockUniswapAnchoredView.deploy();
-  // await mockUniswapAnchoredView.deployed();
-
-  // const uavAddress = mockUniswapAnchoredView.address;
-
   const oracle = await deployPriceOracle(deployer)
   console.log("[Oracle] Setting Oracle to Point to the UAV at: %s", oracle.address)
-  console.log("\t* Note pulling price should follow:\n\t\tcomptroller -> uav proxy -> uav -> validator proxy -> aggregator -> chainlink")
 
   const unitroller = await deployComptroller(deployer, oracle)
 
@@ -39,8 +31,6 @@ async function main() {
   // deployer sends usdt to borrower
   await usdt.connect(deployer).transfer(borrower.address, ethers.utils.parseEther("1000000"))
   console.log("[USDT] Deployer sent 1M USDT to Borrower")
-
-
 
   // Set Market as eligible for the entire platform
   await unitroller._supportMarket(cUSDC.address);
