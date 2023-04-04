@@ -74,11 +74,11 @@ describe('Comptroller', () => {
 
           await expect(
             comptroller.connect(accounts[2])[`_set${method}Paused`](true)
-          ).to.be.revertedWith("pause guardian and admin can pause");
+          ).to.be.revertedWith("only pause guardian and admin can pause");
 
           await expect(
             comptroller.connect(accounts[2])[`_set${method}Paused`](false)
-          ).to.be.revertedWith("pause guardian and admin can pause");
+          ).to.be.revertedWith("only pause guardian and admin can pause");
         });
 
         it(`PauseGuardian can pause of ${method}GuardianPaused`, async () => {
@@ -97,7 +97,7 @@ describe('Comptroller', () => {
           expect(state).to.be.equal(true);
 
           await expect(comptroller.connect(pauseGuardian)[`_set${method}Paused`](false))
-            .to.be.revertedWith("admin can unpause");
+            .to.be.revertedWith("only pause guardian and admin can pause");
           result = comptroller[`_set${method}Paused`](false);
 
 
@@ -148,10 +148,10 @@ describe('Comptroller', () => {
         it(`only pause guardian or admin can pause ${method}`, async () => {
           await expect(
             comptroller.connect(accounts[2])[`_set${method}Paused`](cToken.address, true)
-          ).to.be.revertedWith("pause guardian and admin can pause");
+          ).to.be.revertedWith("only pause guardian and admin can pause");
           await expect(
             comptroller.connect(accounts[2])[`_set${method}Paused`](cToken.address, false)
-          ).to.be.revertedWith("pause guardian and admin can pause");
+          ).to.be.revertedWith("only pause guardian and admin can pause");
         });
 
         it(`PauseGuardian can pause of ${method}GuardianPaused`, async () => {
@@ -175,7 +175,7 @@ describe('Comptroller', () => {
           state = await comptroller[`${camelCase}GuardianPaused`](cToken.address);
           expect(state).to.be.equal(true);
 
-          await expect(comptroller.connect(pauseGuardian)[`_set${method}Paused`](cToken.address, false)).to.be.revertedWith("admin can unpause");
+          await expect(comptroller.connect(pauseGuardian)[`_set${method}Paused`](cToken.address, false)).to.be.revertedWith("only pause guardian and admin can pause");
           result = await comptroller[`_set${method}Paused`](cToken.address, false);
 
 

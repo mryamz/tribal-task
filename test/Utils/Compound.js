@@ -127,13 +127,6 @@ async function makeComptroller(opts = {}) {
     var closeFactor = etherMantissa(dfn(opts.closeFactor, .051));
     var liquidationIncentive = etherMantissa(1);
 
-    // create comp instance
-    var Comp = await ethers.getContractFactory('Comp');
-    var comp = opts.comp || await Comp.deploy(opts.compOwner || root.address);
-    if (!comp) {
-      await comp.deployed();
-    }
-
     const compRate = etherUnsigned(dfn(opts.compRate, 1e18));
 
     await unitroller._setPendingImplementation(comptroller.address);
@@ -145,9 +138,7 @@ async function makeComptroller(opts = {}) {
     await unitroller._setLiquidationIncentive(ethers.BigNumber.from(liquidationIncentive.toString()));
     await unitroller._setCloseFactor(ethers.BigNumber.from(closeFactor.toString()));
     await unitroller._setPriceOracle(priceOracle.address);
-    await unitroller.setCompAddress(comp.address);
-    await unitroller.harnessSetCompRate(ethers.BigNumber.from(compRate.toString()));
-    return Object.assign(unitroller, { priceOracle, comp });
+    return Object.assign(unitroller, { priceOracle });
   }
 }
 
@@ -196,8 +187,6 @@ async function makeCToken(opts = {}) {
       break;
 
     case 'ccomp':
-      const Comp = await ethers.getContractFactory('Comp');
-      helperUnderlying = await Comp.deploy(opts.compHolder ? opts.compHolder.address : root.address);
       CDelegatee = await ethers.getContractFactory('CErc20DelegateHarness');
       cDelegatee = await CDelegatee.deploy();
       CDelegator = await ethers.getContractFactory('CErc20Delegator');
@@ -247,10 +236,6 @@ async function makeCToken(opts = {}) {
 
   if (opts.supportMarket) {
     await helperComptroller._supportMarket(cToken.address);
-  }
-
-  if (opts.addCompMarket) {
-    await send(helperComptroller, '_addCompMarket', [cToken._address]);
   }
 
   if (opts.underlyingPrice) {

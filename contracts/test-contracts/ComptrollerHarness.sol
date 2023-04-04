@@ -95,14 +95,8 @@ contract ComptrollerHarness is ComptrollerG7 {
         compSupplierIndex[cToken][supplier] = index;
     }
 
-    function harnessDistributeAllBorrowerComp(address cToken, address borrower, uint marketBorrowIndexMantissa) public {
-        distributeBorrowerComp(cToken, borrower, Exp({mantissa: marketBorrowIndexMantissa}));
-        compAccrued[borrower] = grantCompInternal(borrower, compAccrued[borrower]);
-    }
-
     function harnessDistributeAllSupplierComp(address cToken, address supplier) public {
         distributeSupplierComp(cToken, supplier);
-        compAccrued[supplier] = grantCompInternal(supplier, compAccrued[supplier]);
     }
 
     function harnessUpdateCompBorrowIndex(address cToken, uint marketBorrowIndexMantissa) public {
@@ -113,19 +107,8 @@ contract ComptrollerHarness is ComptrollerG7 {
         updateCompSupplyIndex(cToken);
     }
 
-    function harnessDistributeBorrowerComp(address cToken, address borrower, uint marketBorrowIndexMantissa) public {
-        distributeBorrowerComp(cToken, borrower, Exp({mantissa: marketBorrowIndexMantissa}));
-    }
-
     function harnessDistributeSupplierComp(address cToken, address supplier) public {
         distributeSupplierComp(cToken, supplier);
-    }
-
-    function harnessTransferComp(address user, uint userAccrued, uint threshold) public returns (uint) {
-        if (userAccrued > 0 && userAccrued >= threshold) {
-            return grantCompInternal(user, userAccrued);
-        }
-        return userAccrued;
     }
 
     function harnessAddCompMarkets(address[] memory cTokens) public {
