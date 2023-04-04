@@ -113,9 +113,6 @@ npx hardhat run ./scripts/deployment/deployLender.js --network sepolia
 
 ```
 [PriceOracle] Deployed Price Oracle: 0x7B015515AcCDdE8f6f28577c41b4C8Ee8f5aa1C5
-[Oracle] Setting Oracle to Point to the UAV at: 0x7B015515AcCDdE8f6f28577c41b4C8Ee8f5aa1C5
-        * Note pulling price should follow:
-                comptroller -> uav proxy -> uav -> validator proxy -> aggregator -> chainlink
 [Unitroller] Deployed Unitroller: 0x33A46AE681455720AFA1B29fE068452Fcf8f5baA
 [Unitroller] Deployed Comptroller: 0xacc32A9b22A7E51A47eE92037feb5d4E60894801
 [Unitroller] Set liquidation Incentive to 8%
@@ -124,13 +121,13 @@ npx hardhat run ./scripts/deployment/deployLender.js --network sepolia
 USDC Deployed: 0x65d4019A04488Ea65ed025DdC10E66AF1E2cdf2a
 Deployed JumpRateModelV2: 0x73178150e3C313aBBD02cd4d82DF7687644c0d3C
 [cUSDC] Deployed Delegate: 0x990BEB556B7812F8077429f9c516AAa369529C80
-cUSDC Deployed Delegator: 0xa18AeB8C4D4A76D55f2cDD718e2f8fe9f96fE763
-cUSDC Setting Reserve Factor to 7.5%
+Deployed Delegator: 0xa18AeB8C4D4A76D55f2cDD718e2f8fe9f96fE763
+Setting Reserve Factor to 7.5%
 USDT Deployed: 0x56FD9A6D509d5BC3114016d06f52619E5aeF1ff8
 Deployed JumpRateModelV2: 0xDa5AFB0F0e7C151FCeE20b57879b0A0Cf6724a85
-[cUSDC] Deployed Delegate: 0x19901Fa6Eb8eF9f21FD48155D68e9253f463c029
-cUSDC Deployed Delegator: 0x3D7fB38241e4ca4835191937991Be6E04c68D8c5
-cUSDC Setting Reserve Factor to 7.5%
+Deployed Delegate: 0x19901Fa6Eb8eF9f21FD48155D68e9253f463c029
+Deployed Delegator: 0x3D7fB38241e4ca4835191937991Be6E04c68D8c5
+Setting Reserve Factor to 7.5%
 [USDT] Deployer sent 1M USDT to Borrower
 [Unitroller] Supporting cUSDC market
 [Unitroller] Supporting cUSDT market
