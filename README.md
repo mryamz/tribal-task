@@ -29,7 +29,7 @@ The following contracts were deployed to the Sepolia network:
 | Delegate (cUSDT) | [0x19901Fa6Eb8eF9f21FD48155D68e9253f463c029](https://sepolia.etherscan.com/address/0x19901Fa6Eb8eF9f21FD48155D68e9253f463c029) |
 | Delegator (cUSDT) | [0x3D7fB38241e4ca4835191937991Be6E04c68D8c5](https://sepolia.etherscan.com/address/0x3D7fB38241e4ca4835191937991Be6E04c68D8c5) |
 | USDC | [0x65d4019A04488Ea65ed025DdC10E66AF1E2cdf2a](https://sepolia.etherscan.com/address/0x65d4019A04488Ea65ed025DdC10E66AF1E2cdf2a) |
-| USDT | [0x56FD9A6D509d5BC3114016d06f52619E5aeF1ff8](https://sepolia.etherscan.com/address/0x56FD9A6D509d5BC3114016d06
+| USDT | [0x56FD9A6D509d5BC3114016d06f52619E5aeF1ff8](https://sepolia.etherscan.com/address/0x56FD9A6D509d5BC3114016d06)
 
 
 
