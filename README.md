@@ -1,8 +1,58 @@
 # Tribal Lending
 
-## Deployed Contracts
+## Reasoning for the project and desing decisions (Deliverable 1)
 
-The following contracts were deployed to the Sepolia network:
+This document outlines the reasons why forking Compound Lending contracts is the best option for providing a lending solution that adheres to best practices, particularly from a regulatory perspective, when compared to other lending protocols such as AAVE and CREAM.
+
+## 1. Proven Track Record
+
+Compound has a proven track record in the DeFi space, being one of the first and most successful decentralized lending platforms. By forking Compound, we can leverage their history of stability and security to create a lending solution that is more likely to meet regulatory requirements.
+
+## 2. Audited and Secure
+
+Compound's smart contracts have undergone rigorous audits by reputable security firms, resulting in a mature and secure codebase. By forking these contracts, we can build upon their robust security infrastructure, reducing the likelihood of encountering vulnerabilities or compliance issues in the future.
+
+## 3. Composability and Integration
+
+Compound's contracts are designed with composability and integration in mind, allowing for seamless interaction with other DeFi protocols. By forking Compound, we can create a lending solution that is compatible with a wide range of other DeFi services, making it more attractive for users and regulators alike.
+
+## 4. Risk Management
+
+The Compound protocol implements robust risk management features, such as over-collateralization, collateral liquidation, and interest rate models. These mechanisms help mitigate risks for both borrowers and lenders, contributing to a more stable and compliant lending platform.
+
+## 5. Lower Regulatory Risk
+
+While AAVE, CREAM, et al. have their own merits, they also come with regulatory risks that may not be present with Compound. AAVE's use of flash loans has led to several high-profile exploits, potentially attracting regulatory scrutiny. CREAM, on the other hand, has been involved in a number of incidents related to smart contract vulnerabilities, which could also raise concerns from a compliance standpoint.
+
+By forking Compound's lending contracts, we can create a lending solution that benefits from its proven stability, security, and transparency, offering a more compliant alternative to other DeFi lending platforms such as AAVE and CREAM.
+
+## Deliverable 2
+
+See the contracts in the `contracts` directory.
+
+## Deliverable 3
+
+From the root directory, you can run deployment scripts using the following commands:
+
+```bash
+npx hardhat run ./scripts/deployment/deployLender.js --network sepolia
+```
+
+See more detailed instructions about expected output below.
+
+## Deliverable 4
+
+See the tests in the `test` directory.
+
+To run the tests, you can use the following command:
+
+```bash
+npx hardhat test
+```
+
+## Deployed/Verified Contracts (Deliverable 5)
+
+The following contracts were deployed to the Sepolia testnet and verified on Etherscan:
 
 | Contract Name | Address |
 | --- | --- |
@@ -45,11 +95,11 @@ The Delegator contracts act as proxies for the Delegate contracts. They hold the
 
 These contracts represent the USDC and USDT stablecoins on the Sepolia network. Users can use these stablecoins to interact with the Lender platform, such as supplying collateral, borrowing assets, or repaying loans. The Lender platform supports multiple stablecoins to offer users flexibility and choice when using the platform.
 
-# Lender Deployment
+# Lender Deployment (Deliverable 6)
 
 This project contains a deployment script that can be used to deploy the Lender contracts to the Sepolia network.
 
-## Deployment Steps
+## Deployment Steps (Deliverable 6 continued)
 
 To deploy the Lender contracts, follow these steps:
 
