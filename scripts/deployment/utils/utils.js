@@ -1,16 +1,6 @@
 const { ethers } = require('hardhat');
 const { mergeInterface } = require('../../../test/Utils/Ethereum');
 
-async function deployWhitePaperModel(deployer) {
-  const baseRate = ethers.utils.parseEther("0.02");
-  const multiplier = ethers.utils.parseEther("0.1");
-  const Model = await ethers.getContractFactory('WhitePaperInterestRateModel');
-  const model = await Model.connect(deployer).deploy(baseRate, multiplier);
-  await model.deployed();
-  console.log("Deployed WhitePaperInterestRateModel:", model.address)
-  return model;
-}
-
 async function deployLegacyJumpRateModelV2(deployer) {
   const baseRate = ethers.utils.parseEther("0");
   const multiplier = ethers.utils.parseEther("0.04");
@@ -18,21 +8,10 @@ async function deployLegacyJumpRateModelV2(deployer) {
   const jump = ethers.utils.parseEther("1.09")
   const Model = await ethers.getContractFactory('JumpRateModelV2');
   const model = await Model.connect(deployer).deploy(baseRate, multiplier, jump, kink, deployer.address);
+
   await model.deployed();
   console.log("Deployed JumpRateModelV2:", model.address)
   return model;
-}
-
-async function deploycETH(deployer, unitroller) {
-  const model = await deployWhitePaperModel(deployer)
-  const exchangeRate = ethers.utils.parseEther("200000000");
-  const CEther = await ethers.getContractFactory('CEther');
-  const cETH = await CEther.connect(deployer).deploy(unitroller.address, model.address, exchangeRate, "Quadrata ETH", "cETH", 18, deployer.address);
-  await cETH.deployed();
-  console.log("[cETH] Deployed cETH: ", cETH.address);
-  await cETH._setReserveFactor(ethers.utils.parseUnits("0.2"))
-  console.log(`[cETH] Setting Reserve Factor to 20%`)
-  return cETH
 }
 
 async function deployUSDC(deployer) {
@@ -51,22 +30,9 @@ async function deployUSDT(deployer) {
   return usdt;
 }
 
-async function deployDAI(deployer) {
-  const DAI = await ethers.getContractFactory('StandardToken')
-  const dai = await DAI.connect(deployer).deploy(ethers.utils.parseEther("1000000000"), "Test DAI", 18, "DAI")
-  await dai.deployed();
-  console.log("DAI Deployed:", dai.address)
-  return dai;
-}
-
 async function deploycUSDC(deployer, unitroller, usdc) {
   // Create InterestModel
   return await deployErc20Delegator(deployer, usdc.address, unitroller, "cUSDC", "Quadrata USDC");
-}
-
-async function deploycDAI(deployer, unitroller, dai) {
-  // Create InterestModel
-  return await deployErc20Delegator(deployer, dai, unitroller, "cDAI", "Quadrata DAI");
 }
 
 async function deploycUSDT(deployer, unitroller, usdt) {
@@ -80,7 +46,7 @@ async function deployErc20Delegator(deployer, tokenAddr, unitroller, symbol, nam
   const CDelegate = await ethers.getContractFactory('CErc20Delegate');
   const cDelegate = await CDelegate.connect(deployer).deploy();
   await cDelegate.deployed();
-  console.log("[cUSDC] Deployed Delegate:", cDelegate.address);
+  console.log("Deployed Delegate:", cDelegate.address);
   // create delegator
   const CDelegator = await ethers.getContractFactory('CErc20Delegator');
   const exchangeRate = ethers.utils.parseEther("0.0002");
@@ -174,11 +140,8 @@ async function deployComptroller(deployer, oracle) {
 module.exports = {
   deployComptroller,
   deployPriceOracle,
-  deploycETH,
   deploycUSDC,
   deployUSDC,
-  deployDAI,
   deployUSDT,
-  deploycDAI,
   deploycUSDT
 }

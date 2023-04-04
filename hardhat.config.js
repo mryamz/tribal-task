@@ -10,10 +10,6 @@ require('solidity-coverage')
 require("hardhat-gas-reporter");
 require('dotenv').config()
 
-function isNull(envVar, defaultValue) {
-  return envVar == null ? defaultValue : envVar
-}
-
 module.exports = {
   defaultNetwork: "hardhat",
   solidity: {
@@ -62,21 +58,19 @@ module.exports = {
       chainId: 1337,
       allowUnlimitedContractSize: true
     },
-    goerli: {
-      url: isNull(process.env.GOERLI, "https://rpc.ankr.com/eth_goerli"),
+    sepolia: {
+      url: process.env.SEPOLIA_URI,
       accounts: [
         process.env.PRIVATE_KEY_1,
         process.env.PRIVATE_KEY_2,
       ].filter(e => e),
-      gas: 2100000,
-      gasPrice: 8000000000
     },
   },
 
   etherscan: {
     // Your API key for Etherscan
     // Obtain one at https://etherscan.io/
-    apiKey: isNull(process.env.ETHERSCAN_API_KEY, "")
+    apiKey: process.env.ETHERSCAN_API_KEY
   },
 
   typechain: {

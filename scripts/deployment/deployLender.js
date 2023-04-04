@@ -11,6 +11,7 @@ const {
   deploycDAI,
 } = require('./utils/utils.js')
 
+
 async function main() {
   const [deployer, borrower] = await ethers.getSigners();
 
@@ -24,6 +25,7 @@ async function main() {
   const oracle = await deployPriceOracle(deployer)
   console.log("[Oracle] Setting Oracle to Point to the UAV at: %s", oracle.address)
   console.log("\t* Note pulling price should follow:\n\t\tcomptroller -> uav proxy -> uav -> validator proxy -> aggregator -> chainlink")
+
   const unitroller = await deployComptroller(deployer, oracle)
 
   // deploy usdc
