@@ -25,9 +25,9 @@ The following contracts were deployed to the Sepolia network:
 | Comptroller | [0xacc32A9b22A7E51A47eE92037feb5d4E60894801](https://sepolia.etherscan.io/address/0xacc32A9b22A7E51A47eE92037feb5d4E60894801) |
 | JumpRateModelV2 | [0x73178150e3C313aBBD02cd4d82DF7687644c0d3C](https://sepolia.etherscan.io/address/0x73178150e3C313aBBD02cd4d82DF7687644c0d3C) |
 | Delegate (cUSDC) | [0x990BEB556B7812F8077429f9c516AAa369529C80](https://sepolia.etherscan.io/address/0x990BEB556B7812F8077429f9c516AAa369529C80) |
-| Delegator (cUSDC) | [0xa18AeB8C4D4A76D55f2cDD718e2f8fe9f96fE763](https://sepolia.etherscan.io/address/0xa18AeB8C4D4A76D55f2cDD718e2f8fe9f96fE763) |
+| Delegator (cUSDC) | [0xa18AeB8C4D4A76D55f2cDD718e2f8fe9f96fE763](https://sepolia.etherscan.io/address/0xa18AeB8C4D4A76D55f2cDD718e2f8fe9f96fE763#readProxyContract) |
 | Delegate (cUSDT) | [0x19901Fa6Eb8eF9f21FD48155D68e9253f463c029](https://sepolia.etherscan.io/address/0x19901Fa6Eb8eF9f21FD48155D68e9253f463c029) |
-| Delegator (cUSDT) | [0x3D7fB38241e4ca4835191937991Be6E04c68D8c5](https://sepolia.etherscan.io/address/0x3D7fB38241e4ca4835191937991Be6E04c68D8c5) |
+| Delegator (cUSDT) | [0x3D7fB38241e4ca4835191937991Be6E04c68D8c5](https://sepolia.etherscan.io/address/0x3D7fB38241e4ca4835191937991Be6E04c68D8c5#readProxyContract) |
 | USDC | [0x65d4019A04488Ea65ed025DdC10E66AF1E2cdf2a](https://sepolia.etherscan.io/address/0x65d4019A04488Ea65ed025DdC10E66AF1E2cdf2a) |
 | USDT | [0x56FD9A6D509d5BC3114016d06f52619E5aeF1ff8](https://sepolia.etherscan.io/address/0x56FD9A6D509d5BC3114016d06)
 
