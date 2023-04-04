@@ -35,6 +35,7 @@ The following contracts were deployed to the Sepolia network:
 
 ## Deployment Log
 
+```
 [PriceOracle] Deployed Price Oracle: 0x7B015515AcCDdE8f6f28577c41b4C8Ee8f5aa1C5
 [Oracle] Setting Oracle to Point to the UAV at: 0x7B015515AcCDdE8f6f28577c41b4C8Ee8f5aa1C5
         * Note pulling price should follow:
@@ -78,5 +79,6 @@ borrower USDC Balance: 3.1415
 borrower cUSDC Balance: 0.0
 borrower USDT Balance: 500000000000000000.0
 borrower cUSDT Balance: 25000000000000000000.0
+```
 
 
