@@ -34,7 +34,9 @@ See the contracts in the `contracts` directory.
 
 From the root directory, you can run deployment scripts using the following commands:
 
-Before running the scripts, you need to create a `.env` file in the root directory and add the following environment variables:
+Before running the scripts on a live network, you need to create a `.env` file in the root directory and add the following environment variables:
+
+Note: You can run the scripts on the hardhat local network by using the `--network hardhat` flag. This will allow you to skip setting up the environment variables.
 
 ```bash
 PRIVATE_KEY_1="DEPLOYER/SUPPLIER"
